@@ -22,6 +22,8 @@ workflows:
       - envsubst < flutter_launcher_icon.env.yaml > flutter_launcher_icon.yaml
       - flutter pub run flutter_launcher_icons -f flutter_launcher_icon.yaml
       - flutter build appbundle
+    artifacts:
+      - build/**/outputs/**/*.aab
     publishing:
       email:
         recipients:
