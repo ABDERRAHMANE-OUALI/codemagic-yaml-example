@@ -22,3 +22,7 @@ workflows:
       - envsubst < flutter_launcher_icon.env.yaml > flutter_launcher_icon.yaml
       - flutter pub run flutter_launcher_icons -f flutter_launcher_icon.yaml
       - flutter build appbundle
+    publishing:
+      email:
+        recipients:
+          - abdealex05@gmail.com

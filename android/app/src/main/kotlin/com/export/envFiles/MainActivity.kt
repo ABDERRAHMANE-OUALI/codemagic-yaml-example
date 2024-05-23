@@ -1,4 +1,4 @@
-package com.export.env-files
+package com.export.envFiles
 
 import io.flutter.embedding.android.FlutterActivity
 
