@@ -1,0 +1,23 @@
+workflows:
+  build-android:
+    triggering:
+      events:
+        - "push"
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      xcode: latest
+    cache:
+      cache_paths:
+        - $FLUTTER_ROOT/.pub-cache
+        - $HOME/.gradle/caches
+        - $HOME/Library/Caches/CocoaPods
+    name: Build Android app
+    scripts:
+      - flutter pub get
+      - export $(xargs <env-codemagic.env)
+      - envsubst < flutter_native_splash.env.yaml > flutter_native_splash.yaml
+      - dart run flutter_native_splash:create --path=./flutter_native_splash.yaml
+      - envsubst < flutter_launcher_icon.env.yaml > flutter_launcher_icon.yaml
+      - flutter pub run flutter_launcher_icons -f flutter_launcher_icon.yaml
+      - flutter build appbundle
