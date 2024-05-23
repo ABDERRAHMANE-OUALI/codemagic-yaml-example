@@ -15,7 +15,7 @@ workflows:
     name: Build Android app
     scripts:
       - flutter pub get
-      - export $(cat .env | egrep -v "(^#.*|^$)" | xargs)
+      - cat .env >> $CM_ENV
       - echo $PACKAGE_NAME
       - envsubst < flutter_native_splash.env.yaml > flutter_native_splash.yaml
       - dart run flutter_native_splash:create --path=./flutter_native_splash.yaml
