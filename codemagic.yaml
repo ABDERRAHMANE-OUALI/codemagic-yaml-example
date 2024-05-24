@@ -17,10 +17,9 @@ workflows:
       - flutter pub get
       - cat .env >> $CM_ENV
       - echo $PACKAGE_NAME
-      - envsubst < flutter_native_splash.env.yaml > flutter_native_splash.yaml
-      - dart run flutter_native_splash:create --path=./flutter_native_splash.yaml
-      - envsubst < flutter_launcher_icon.env.yaml > flutter_launcher_icon.yaml
-      - flutter pub run flutter_launcher_icons -f flutter_launcher_icon.yaml
+      - envsubst < pubspec.env.yaml > pubspec.yaml
+      - dart run flutter_native_splash:create
+      - dart run flutter_launcher_icons
       - flutter build apk
     artifacts:
       - build/**/outputs/apk/**/*.apk
