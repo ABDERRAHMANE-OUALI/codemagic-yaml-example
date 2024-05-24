@@ -26,7 +26,6 @@ workflows:
       - flutter pub global activate rename
       - rename setAppName --targets ios,android --value $APP_NAME
       - rename setBundleId --targets ios,android --value $PACKAGE_NAME
-      - firebase use $FIREBASE_PROJECT_ID
       - flutter build ipa
     artifacts:
       - build/**/outputs/apk/**/*.apk
