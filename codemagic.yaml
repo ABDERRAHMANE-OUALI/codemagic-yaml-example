@@ -23,6 +23,7 @@ workflows:
       - envsubst < pubspec.env.yaml > pubspec.yaml
       - dart run flutter_native_splash:create
       - dart run flutter_launcher_icons
+      - flutter pub global activate rename
       - rename setAppName --targets ios,android --value $APP_NAME
       - rename setBundleId --targets ios,android --value $PACKAGE_NAME
       - firebase use $FIREBASE_PROJECT_ID
