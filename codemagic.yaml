@@ -7,12 +7,15 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
+      # ios_signing:
+      #   distribution_type: app_store
+      #   bundle_identifier: com.keyspire.ts
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
         - $HOME/.gradle/caches
         - $HOME/Library/Caches/CocoaPods
-    name: Build Android app
+    name: Build iOS app
     scripts:
       - flutter pub get
       - cat .env >> $CM_ENV
@@ -20,6 +23,9 @@ workflows:
       - envsubst < pubspec.env.yaml > pubspec.yaml
       - dart run flutter_native_splash:create
       - dart run flutter_launcher_icons
+      - rename setAppName --targets ios,android --value $APP_NAME
+      - rename setBundleId --targets ios,android --value $PACKAGE_NAME
+      - firebase use $FIREBASE_PROJECT_ID
       - flutter build ipa
     artifacts:
       - build/**/outputs/apk/**/*.apk
