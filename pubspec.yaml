@@ -55,12 +55,10 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 flutter_launcher_icons:
-  image_path_android: "assets/images/app_launcher_icon.png"
-  image_path_ios: "assets/images/app_launcher_icon.png"
+  image_path: assets/images/app_launcher_icon.png
+  android: true
+  ios: true
   remove_alpha_ios: true
-  android: true # can specify file name here e.g. "ic_launcher"
-  ios: true # can specify file name here e.g. "My-Launcher-Icon"
-  min_sdk_android: 21 # android min sdk min:16, default 21
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen

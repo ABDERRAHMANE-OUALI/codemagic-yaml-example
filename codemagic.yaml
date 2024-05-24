@@ -1,5 +1,5 @@
 workflows:
-  build-android:
+  build-iOS:
     triggering:
       events:
         - "push"
@@ -20,9 +20,10 @@ workflows:
       - envsubst < pubspec.env.yaml > pubspec.yaml
       - dart run flutter_native_splash:create
       - dart run flutter_launcher_icons
-      - flutter build apk
+      - flutter build ipa
     artifacts:
       - build/**/outputs/apk/**/*.apk
+      - build/ios/ipa/*.ipa
     publishing:
       email:
         recipients:
